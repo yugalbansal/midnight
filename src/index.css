@@ -1,5 +1,4 @@
-
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -78,4 +77,82 @@
   .btn-secondary {
     @apply bg-transparent border border-recipe-primary text-recipe-primary px-6 py-3 rounded-md hover:bg-recipe-primary/10 transition-all duration-200 font-medium;
   }
+} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 🎨 Background and foreground */
+    --background: 30 60% 95%;       /* Light cream */
+    --foreground: 24 30% 10%;       /* Deep brown for text */
+
+    /* 🧾 Cards & Popovers */
+    --card: 30 60% 98%;             /* Lighter cream */
+    --card-foreground: 24 30% 10%;
+
+    --popover: 30 60% 98%;
+    --popover-foreground: 24 30% 10%;
+
+    /* 🍊 Primary (Orange tones for calls to action) */
+    --primary: 24 90% 55%;          /* Vibrant orange */
+    --primary-foreground: 30 60% 98%;
+
+    /* 🫒 Secondary (Muted olive tone) */
+    --secondary: 60 20% 85%;        /* Soft beige */
+    --secondary-foreground: 24 30% 15%;
+
+    /* 🌿 Muted (for subtitles and small text) */
+    --muted: 60 15% 80%;
+    --muted-foreground: 24 20% 40%;
+
+    /* 🥑 Accent (Greenish accent for healthy vibes) */
+    --accent: 140 50% 45%;          /* Fresh avocado green */
+    --accent-foreground: 30 60% 98%;
+
+    /* 🔴 Destructive (for warnings) */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 30 60% 98%;
+
+    /* 🧾 Borders and Inputs */
+    --border: 30 25% 85%;
+    --input: 30 25% 85%;
+    --ring: 24 90% 55%;
+
+    --radius: 0.75rem;
+  }
 }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-opacity-30 bg-white backdrop-filter backdrop-blur-md border border-opacity-20 border-muted;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden bg-muted;
+  }
+
+  .shimmer::before {
+    @apply absolute top-0 -left-[100%] w-[200%] h-full;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite linear;
+    content: '';
+  }
+
+  .recipe-card {
+    @apply bg-card text-card-foreground rounded-xl p-6 shadow-md hover:shadow-xl hover:shadow-primary/20 transition-all duration-300;
+  }
+
+  .recipe-card
